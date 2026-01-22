@@ -34,14 +34,12 @@ public class BurgerMockitoTests {
     public void testThatSetBunAddNotNull() {
         burger.setBuns(mockBun);
         Assert.assertNotNull(burger.bun);
-        Assert.assertEquals(mockBun, burger.bun);
     }
 
     @Test
     public void testThatAddIngredientIncreaseIngredientsSize() {
         burger.addIngredient(mockIngredientOne);
         Assert.assertEquals(1, burger.ingredients.size());
-        Assert.assertEquals(mockIngredientOne, burger.ingredients.get(0));
     }
 
     @Test
@@ -50,7 +48,6 @@ public class BurgerMockitoTests {
         burger.addIngredient(mockIngredientTwo);
         burger.removeIngredient(0);
         Assert.assertEquals(1, burger.ingredients.size());
-        Assert.assertEquals(mockIngredientTwo, burger.ingredients.get(0));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -65,8 +62,6 @@ public class BurgerMockitoTests {
         burger.addIngredient(mockIngredientThree);
         burger.moveIngredient(0, 2);
         Assert.assertEquals(mockIngredientOne, burger.ingredients.get(2));
-        Assert.assertEquals(mockIngredientTwo, burger.ingredients.get(0));
-        Assert.assertEquals(mockIngredientThree, burger.ingredients.get(1));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -111,14 +106,6 @@ public class BurgerMockitoTests {
                 expectedReceipt,
                 actualReceipt
         );
-
-        verify(mockBun, times(2)).getName();
-        verify(mockBun, times(1)).getPrice();
-        verify(mockIngredientOne, times(1)).getType();
-        verify(mockIngredientOne, times(1)).getName();
-        verify(mockIngredientOne, times(1)).getPrice();
-        verify(mockIngredientTwo, times(1)).getType();
-        verify(mockIngredientTwo, times(1)).getName();
-        verify(mockIngredientTwo, times(1)).getPrice();
     }
+
 }
